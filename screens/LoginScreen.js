@@ -53,7 +53,7 @@ function LoginScreen({navigation}) {
         
         <View style={styles.layer2bottom}>
           <View style={{flex:2,flexDirection:'column',justifyContent:'space-evenly'}}>
-            <Text style={{alignSelf:'center', fontSize: 20}} > Don't Have an Account? </Text>
+            <Text style={{alignSelf:'center', fontSize: 20,color:'grey'}} > Don't Have an Account? </Text>
             <TouchableNativeFeedback onPress={pressHandler1} >
               <View style={[styles.buttonContainer]}>
                 <Text style={{color:'white',fontSize:20}}> sign up </Text>
@@ -61,8 +61,8 @@ function LoginScreen({navigation}) {
             </TouchableNativeFeedback>
           </View>
           <View style={{flex:1, flexDirection:'row', justifyContent:'flex-end', alignItems:'flex-end'}}>
-            <Text style={{fontSize: 20}} onPress={()=>alert("help pressed")}> help </Text>
-            <Text style={{fontSize: 20}} onPress={()=>alert("pivacy pressed")}> privacy policy </Text>
+            <Text style={{fontSize: 20,color:'grey'}} onPress={()=>alert("help pressed")}> help </Text>
+            <Text style={{fontSize: 20,color:'grey'}} onPress={()=>alert("pivacy pressed")}> privacy policy </Text>
           </View>
         </View>
       </View>

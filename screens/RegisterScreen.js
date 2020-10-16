@@ -61,7 +61,7 @@ export default function RegisterScreen({navigation}) {
                         onValueChange={setSelection}
                         style={{alignSelf: "center"}}
                     />
-                    <Text style={{alignSelf:'center'}}>I agree to terms and conditions</Text>
+                    <Text style={{alignSelf:'center',color:'grey'}}>I agree to terms and conditions</Text>
                     {/* <Text>Is CheckBox selected: {isSelected ? "👍" : "👎"}</Text> */}
                 </View>
                 
@@ -75,7 +75,7 @@ export default function RegisterScreen({navigation}) {
 
             <View style={styles.layer2bottom}>
                 <View style={{flex:2,flexDirection:'column',justifyContent:'space-evenly'}}>
-                    <Text style={{alignSelf:'center', fontSize: 15}} > already have an account? </Text>
+                    <Text style={{alignSelf:'center', fontSize: 15,color:'grey'}} > already have an account? </Text>
                     <TouchableNativeFeedback onPress={pressHandler1} >
                         <View style={[styles.buttonContainer]}>
                             <Text style={{color:'white',fontSize:18}}> sign in </Text>
@@ -83,8 +83,8 @@ export default function RegisterScreen({navigation}) {
                     </TouchableNativeFeedback>
                 </View>
                 <View style={{flex:1, flexDirection:'row', justifyContent:'flex-end', alignItems:'flex-end'}}>
-                    <Text style={{fontSize: 15}} onPress={()=>alert("help pressed")}> help </Text>
-                    <Text style={{fontSize: 15}} onPress={()=>alert("pivacy pressed")}> privacy policy </Text>
+                    <Text style={{fontSize: 15,color:'grey'}} onPress={()=>alert("help pressed")}> help </Text>
+                    <Text style={{fontSize: 15,color:'grey'}} onPress={()=>alert("pivacy pressed")}> privacy policy </Text>
                 </View>
             </View>
 
