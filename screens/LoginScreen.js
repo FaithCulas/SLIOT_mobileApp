@@ -13,54 +13,59 @@ function LoginScreen({navigation}) {
   return (
       <View style={styles.container}>
 
-      <View style={styles.topContainer}>
-      </View>
-      <View style={styles.bottomContainer}>
-      </View>
+        <View style={styles.topContainer}>
+        </View>
+        <View style={styles.bottomContainer}>
+        </View>
 
-      
-      <Image source={require("../assets/pup.jpg")} style={styles.img}/>
-
-      <View style={styles.roundedSquare}>
-        <View style={{flex:1, flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-          <Text style={{color:'black',fontSize:30}}> Login </Text>
-          <Image source={require("../assets/pup.jpg")} style={{width:30, height:30}}/>  
+        <View style={styles.img}>
+          <Image source={require("../assets/pup.jpg")} 
+            style={{flex:1,
+            width: 100,
+            height: 100,
+            zIndex:1}}/>
+          <Text style={{color:'white', fontSize:20}}>SNAP IT</Text>
         </View>
         
-        <View style={{flex:1, flexDirection:'column'}}>
-          <Text style={styles.loginText}>user name </Text>
-          <TextInput style={styles.loginTextInput}>user1@example.com </TextInput>
-        </View>
 
-        <View style={{flex:1, flexDirection:'column'}}>
-          <Text style={styles.loginText}>password </Text>
-          <TextInput style={styles.loginTextInput}>................................... </TextInput>
-        </View>
-        
-        <TouchableNativeFeedback onPress={pressHandler2}>
-          <View style={[styles.buttonContainer, {marginBottom:10}]}>
-            <Text style={{color:'white',fontSize:20}}> sign in </Text>
+        <View style={styles.roundedSquare}>
+          <View style={{flex:1, flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+            <Text style={{color:'black',fontSize:30}}> Login </Text>
+            <Image source={require("../assets/pup.jpg")} style={{width:30, height:30}}/>  
           </View>
-        </TouchableNativeFeedback>
-      </View> 
-      
-      <View style={styles.layer2bottom}>
-        <View style={{flex:2,flexDirection:'column',justifyContent:'space-evenly'}}>
-          <Text style={{alignSelf:'center', fontSize: 20}} > Don't Have an Account? </Text>
-          <TouchableNativeFeedback onPress={pressHandler1} >
-            <View style={[styles.buttonContainer]}>
-              <Text style={{color:'white',fontSize:20}}> sign up </Text>
+          
+          <View style={{flex:1, flexDirection:'column'}}>
+            <Text style={styles.loginText}>user name </Text>
+            <TextInput style={styles.loginTextInput}>user1@example.com </TextInput>
+          </View>
+
+          <View style={{flex:1, flexDirection:'column'}}>
+            <Text style={styles.loginText}>password </Text>
+            <TextInput style={styles.loginTextInput}>................................... </TextInput>
+          </View>
+          
+          <TouchableNativeFeedback onPress={pressHandler2}>
+            <View style={[styles.buttonContainer, {marginBottom:10}]}>
+              <Text style={{color:'white',fontSize:20}}> sign in </Text>
             </View>
           </TouchableNativeFeedback>
-        </View>
-        <View style={{flex:1, flexDirection:'row', justifyContent:'flex-end', alignItems:'flex-end'}}>
-          <Text style={{fontSize: 20}} onPress={()=>alert("help pressed")}> help </Text>
-          <Text style={{fontSize: 20}} onPress={()=>alert("pivacy pressed")}> privacy policy </Text>
+        </View> 
+        
+        <View style={styles.layer2bottom}>
+          <View style={{flex:2,flexDirection:'column',justifyContent:'space-evenly'}}>
+            <Text style={{alignSelf:'center', fontSize: 20}} > Don't Have an Account? </Text>
+            <TouchableNativeFeedback onPress={pressHandler1} >
+              <View style={[styles.buttonContainer]}>
+                <Text style={{color:'white',fontSize:20}}> sign up </Text>
+              </View>
+            </TouchableNativeFeedback>
+          </View>
+          <View style={{flex:1, flexDirection:'row', justifyContent:'flex-end', alignItems:'flex-end'}}>
+            <Text style={{fontSize: 20}} onPress={()=>alert("help pressed")}> help </Text>
+            <Text style={{fontSize: 20}} onPress={()=>alert("pivacy pressed")}> privacy policy </Text>
+          </View>
         </View>
       </View>
-      
-      
-    </View>
   );
 }
 
@@ -94,13 +99,14 @@ const styles = StyleSheet.create({
       position:'absolute',
     },
     img: {
-      flex:1,
-      alignSelf:'center',
-      width: 150,
-      height: 150,
-      top: 50,
-      zIndex:1,
       position:'absolute',
+      flex:1,
+      zIndex:2,
+      flexDirection:'column',
+      alignItems:'center',
+      //borderWidth:3,
+      alignSelf:'center',
+      top:50
     },
     loginText: {
       color: 'blue',
