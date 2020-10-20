@@ -19,7 +19,7 @@ export default function RegisterScreen({navigation}) {
 
             <View style={styles.frontContainer}>
                 <View style={styles.img}>
-                    <Image source={require("../assets/pup.jpg")}  style={{width: 50, height: 50, margin:5}}/>
+                    <Image source={require("../pup.jpg")}  style={{width: 50, height: 50, margin:5}}/>
                     <Text style={{color:'white', fontSize:15, top:20}}>SNAP IT</Text>
                 </View> 
 

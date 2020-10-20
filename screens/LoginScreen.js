@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableNativeFeedback, ScrollView, SafeAreaView} from 'react-native';
 import Auth0 from 'react-native-auth0';
 
+
 function LoginScreen({navigation}) {
 
   const pressHandler1 = () => {
@@ -11,7 +12,7 @@ function LoginScreen({navigation}) {
     navigation.navigate('Content')
   }
   const auth0 = new Auth0({ domain: 'dev-898-w5h0.au.auth0.com', clientId: 'pZRM75jknulto3yeftlgSRn3Q0f3Sdjy' });
-
+  
   auth0
     .webAuth
     .authorize({scope: 'openid profile email'})

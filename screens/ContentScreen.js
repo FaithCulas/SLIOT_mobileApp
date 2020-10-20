@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text,View, Image, StyleSheet, Animated, TouchableNativeFeedback} from 'react-native';
-import {ProgressBar, Colors} from 'react-native-paper';
 
 export default function ContentScreen() {
     const user = 'Rozan';
@@ -9,7 +8,7 @@ export default function ContentScreen() {
     return (
         <View style={{flex:1,flexDirection:'column',backgroundColor:'white'}}>
             <View style={{flex:1, alignSelf:'flex-end'}}>
-                <Image source={require("../assets/pup.jpg")} 
+                <Image source={require("../pup.jpg")} 
                     style={{width: 50, height: 50, margin:5}}/>
             </View>
             <View style={{flex:2,flexDirection:'column', alignItems:'center'}}>
