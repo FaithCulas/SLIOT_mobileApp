@@ -25,38 +25,38 @@ export default function RegisterScreen({navigation}) {
 
                 <View style={styles.roundedSquare}>
                     
-                    <View style={{flex:1, flexDirection:'column', marginTop:15}}>
-                        <Text style={styles.loginText}>email </Text>
-                        <TextInput style={styles.loginTextInput}>name@example.com </TextInput>
+                    <View style={{flex:0.8, flexDirection:'column', marginTop:15}}>
+                        <Text style={styles.loginText}> email </Text>
+                        <TextInput style={styles.loginTextInput} value='' placeholder='name@example.com' placeholderTextColor='grey'></TextInput>
                     </View>
 
-                    <View style={{flex:1, flexDirection:'column'}}>
-                        <Text style={styles.loginText}>First name </Text>
-                        <TextInput style={styles.loginTextInput}>my name </TextInput>
+                    <View style={{flex:0.8, flexDirection:'column'}}>
+                        <Text style={styles.loginText}> First name </Text>
+                        <TextInput style={styles.loginTextInput} placeholder='my name' placeholderTextColor='grey'></TextInput>
                     </View>
 
-                    <View style={{flex:1, flexDirection:'column'}}>
-                        <Text style={styles.loginText}>Last name </Text>
-                        <TextInput style={styles.loginTextInput}>last name </TextInput>
+                    <View style={{flex:0.8, flexDirection:'column'}}>
+                        <Text style={styles.loginText}> Last name </Text>
+                        <TextInput style={styles.loginTextInput} value='' placeholder='last name' placeholderTextColor='grey'></TextInput>
                     </View>
 
-                    <View style={{flex:2.2, flexDirection:'column'}}>
-                        <Text style={styles.loginText}>Address </Text>
-                        <TextInput style={styles.loginTextInput}>line1 </TextInput>
-                        <TextInput style={styles.loginTextInput}>line2 </TextInput>
-                        <TextInput style={styles.loginTextInput}>line3 </TextInput>
+                    <View style={{flex:1.8, flexDirection:'column'}}>
+                        <Text style={styles.loginText}> Address </Text>
+                        <TextInput style={styles.loginTextInput} placeholder='line1' placeholderTextColor='grey'></TextInput>
+                        <TextInput style={styles.loginTextInput} placeholder='line2' placeholderTextColor='grey'></TextInput>
+                        <TextInput style={styles.loginTextInput} placeholder='line3' placeholderTextColor='grey'></TextInput>
                     </View>
 
-                    <View style={{flex:1, flexDirection:'column'}}>
-                        <Text style={styles.loginText}>Mobile </Text>
-                        <TextInput style={styles.loginTextInput}>07x-xxxxxxx </TextInput>
+                    <View style={{flex:0.8, flexDirection:'column'}}>
+                        <Text style={styles.loginText}> Mobile </Text>
+                        <TextInput style={styles.loginTextInput} placeholder='07x-xxxxxxx' placeholderTextColor='grey'></TextInput>
                     </View>
 
-                    <View style={{flex:1, flexDirection: "row", justifyContent:'center'}}>
+                    <View style={{flex:0.5, flexDirection: "row", justifyContent:'center'}}>
                         <CheckBox
                             onIconPress={()=>alert('checkbox clicked')}
                             checked={isChecked}
-                            style={{alignSelf: "center"}}
+                            style={{alignSelf:'center'}}
                         />
                         <Text style={{alignSelf:'center',color:'grey'}}>I agree to terms and conditions</Text>
                     </View>
@@ -127,18 +127,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffff',
         width:'90%',
         borderRadius: 10,
-        borderWidth: 2,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        elevation:5
       },
       loginText: {
         color: 'blue',
         fontSize: 15,
-        marginLeft:10
+        marginLeft:10,
+        flex:1
       },
       loginTextInput: {
         fontSize: 15,
         color:'grey',
-        marginLeft:10
+        marginLeft:10,
+        flex:1
       },
       buttonContainer: {
         width:120, 

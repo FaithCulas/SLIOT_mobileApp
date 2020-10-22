@@ -27,7 +27,7 @@ export default function ContentScreen() {
                 <View style={styles.progressBar}>
                     <Animated.View style={[styles.absoluteFill], {backgroundColor: "lightgrey", width: progressValue}}/>
                 </View>
-                <View style={{flexDirection:'row'}}> 
+                <View style={{flexDirection:'row', width: 180, justifyContent:'space-between'}}> 
                     <View style={[styles.oval,{backgroundColor:'lightgreen'}]}></View>
                     <View style={[styles.oval,{backgroundColor:'yellow'}]}></View>
                     <View style={[styles.oval,{backgroundColor:'orange'}]}></View>

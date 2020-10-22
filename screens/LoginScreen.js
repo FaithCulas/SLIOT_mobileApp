@@ -57,13 +57,13 @@ function LoginScreen({navigation}) {
                 </View>
                 
                 <View style={{flex:1, flexDirection:'column'}}>
-                  <Text style={styles.loginText}>user name </Text>
-                  <TextInput style={styles.loginTextInput}>user1@example.com </TextInput>
+                  <Text style={styles.loginText}> user name </Text>
+                  <TextInput style={styles.loginTextInput} placeholder='user1@example.com' placeholderTextColor='grey'></TextInput>
                 </View>
 
                 <View style={{flex:1, flexDirection:'column'}}>
-                  <Text style={styles.loginText}>password </Text>
-                  <TextInput style={styles.loginTextInput}>................................... </TextInput>
+                  <Text style={styles.loginText}> password </Text>
+                  <TextInput style={styles.loginTextInput} placeholder='...................................' placeholderTextColor='grey'></TextInput>
                 </View>
                 
                 <TouchableNativeFeedback onPress={pressHandler2}>
@@ -122,9 +122,10 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       backgroundColor: '#ffff',
       width:'90%',
-      borderRadius: 10,
-      borderWidth: 2,
+      borderRadius: 20,
       alignSelf: 'center',
+      elevation:5
+
     },
     img: {
       flex:1.5,
