@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import {StyleSheet,Text,View, Image, TextInput, TouchableNativeFeedback} from 'react-native';
-import { CheckBox } from 'react-native-elements';
+import {StyleSheet,Text,View, Image, TextInput, TouchableNativeFeedback, Button} from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
+//import { CheckBox } from 'react-native-elements';
 
 export default function RegisterScreen({navigation}) {
 
-    const [isChecked] = useState(false);
     const pressHandler1 = () => {
         navigation.navigate('Content')
       }
+
+    const [isSelected, setSelection] = useState(false);
 
     return (
         <View style={styles.container}>
@@ -27,7 +29,7 @@ export default function RegisterScreen({navigation}) {
                     
                     <View style={{flex:0.8, flexDirection:'column', marginTop:15}}>
                         <Text style={styles.loginText}> email </Text>
-                        <TextInput style={styles.loginTextInput} value='' placeholder='name@example.com' placeholderTextColor='grey'></TextInput>
+                        <TextInput style={styles.loginTextInput} placeholder='name@example.com' placeholderTextColor='grey'></TextInput>
                     </View>
 
                     <View style={{flex:0.8, flexDirection:'column'}}>
@@ -37,7 +39,7 @@ export default function RegisterScreen({navigation}) {
 
                     <View style={{flex:0.8, flexDirection:'column'}}>
                         <Text style={styles.loginText}> Last name </Text>
-                        <TextInput style={styles.loginTextInput} value='' placeholder='last name' placeholderTextColor='grey'></TextInput>
+                        <TextInput style={styles.loginTextInput} placeholder='last name' placeholderTextColor='grey'></TextInput>
                     </View>
 
                     <View style={{flex:1.8, flexDirection:'column'}}>
@@ -53,14 +55,13 @@ export default function RegisterScreen({navigation}) {
                     </View>
 
                     <View style={{flex:0.5, flexDirection: "row", justifyContent:'center'}}>
-                        <CheckBox
-                            onIconPress={()=>alert('checkbox clicked')}
-                            checked={isChecked}
-                            style={{alignSelf:'center'}}
+                       <CheckBox
+                          value={isSelected}
+                          onValueChange={setSelection}
                         />
+                        {/* <Text>Is CheckBox selected: {isSelected ? "👍" : "👎"}</Text> */}
                         <Text style={{alignSelf:'center',color:'grey'}}>I agree to terms and conditions</Text>
                     </View>
-                    {/* <Text>Is CheckBox selected: {isChecked ? "👍" : "👎"}</Text> */}
 
                     <TouchableNativeFeedback onPress={()=>alert("u have registered")}>
                         <View style={[styles.buttonContainer, {marginBottom:10}]}>
