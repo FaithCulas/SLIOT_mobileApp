@@ -13,13 +13,15 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import Auth0 from 'react-native-auth0';
+import Nfc from '../Nfc.js';
 
 export default function InfoScreen() {
   const [currentDate, setCurrentDate] = useState('');
   const [currentTime, setCurrentTime] = useState('');
   const userid = '1';
   const isid = '5f8bdbea7119bc007641a5c4';
-  const username = 'Faith'
+  const username = 'Faith';
+  const [temp, setTemp] = useState('');
 
   useEffect(() => {
     var date = new Date().getDate(); //Current Date
@@ -93,12 +95,15 @@ export default function InfoScreen() {
     });
   };
 
+  const test=(x) =>{
+    setTemp(x)
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content3}>
         <TouchableOpacity  onPress={()=>{alert("you clicked me")}}>
           <Image style= {styles.image} source ={require('../icon.png')} />
-
         </TouchableOpacity>
       </View>
       <View style={styles.content1}>
@@ -114,7 +119,8 @@ export default function InfoScreen() {
             values.time = currentTime;
             values.userid = userid;
             values.isid = isid;
-            //console.log(values);
+            values.temp = temp;
+            console.log(values);
             getDataUsingPost(values);
           }}>
           {({handleChange, handleSubmit, values}) => (
@@ -130,6 +136,9 @@ export default function InfoScreen() {
             </View>
           )}
         </Formik>
+      </View>
+      <View style={styles.content1}>
+        <Nfc setTemp={test}/>
       </View>
       <View style={styles.riskLevel}>
         <Text style={{color:'grey',fontSize:20, marginTop:30}}>Risk Level</Text>
@@ -208,7 +217,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   content2: {
-    flex: 3,
+    flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
   },

@@ -119,6 +119,7 @@ import Navigator from './routers/homeStack';
 
 export default function App() {
   return (
+
     <Navigator/>
   );
 }
