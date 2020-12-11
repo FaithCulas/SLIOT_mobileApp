@@ -13,7 +13,12 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import Auth0 from 'react-native-auth0';
-import Nfc from '../Nfc.js';
+import NfcManager, {
+  NfcEvents,
+  NfcTech,
+  NfcAdapter,
+  NdefParser,
+} from 'react-native-nfc-manager';
 
 export default function InfoScreen() {
   const [currentDate, setCurrentDate] = useState('');
@@ -21,7 +26,7 @@ export default function InfoScreen() {
   const userid = '1';
   const isid = '5f8bdbea7119bc007641a5c4';
   const username = 'Faith';
-  const [temp, setTemp] = useState('');
+  const [temp,setTemp] = useState('');
 
   useEffect(() => {
     var date = new Date().getDate(); //Current Date
@@ -95,9 +100,68 @@ export default function InfoScreen() {
     });
   };
 
-  const test=(x) =>{
-    setTemp(x)
+  const componentDidMount = () => {
+    NfcManager.start();
+    NfcManager.setEventListener(NfcEvents.DiscoverTag,_onTagDiscovered);
   }
+
+  const componentWillUnmount= ()=> {
+      _cleanUp();
+      NfcManager.setEventListener(NfcEvents.DiscoverTag, null);
+      NfcManager.unregisterTagEvent().catch(() => 0);
+    }
+    _cleanUp = () => {
+      NfcManager.cancelTechnologyRequest().catch(() => 0);
+    }
+  const readData = async () => {
+      try {
+        await NfcManager.registerTagEvent();
+
+
+      } catch (ex) {
+        console.warn('ex', ex);
+        NfcManager.unregisterTagEvent().catch(() => 0);
+      }
+    }
+
+  const _onTagDiscovered = tag => {
+      setState({ tag });
+
+      let parsed = null;
+      if (tag.ndefMessage && tag.ndefMessage.length > 0) {
+          // ndefMessage is actually an array of NdefRecords,
+          // and we can iterate through each NdefRecord, decode its payload
+          // according to its TNF & type
+          const ndefRecords = tag.ndefMessage;
+
+          function decodeNdefRecord(record) {
+              if (Ndef.isType(record, Ndef.TNF_WELL_KNOWN, Ndef.RTD_TEXT)) {
+                  return Ndef.text.decodePayload(record.payload);
+              }
+
+              return ['unknown', '---']
+          }
+
+          parsed = ndefRecords.map(decodeNdefRecord);
+      }
+      setState({parsed});
+
+      NfcManager.setAlertMessageIOS('Login Successful');
+      NfcManager.unregisterTagEvent().catch(() => 0);
+
+
+      // Decrypt the NFC data
+      var content = state.parsed[0];
+      console.log('Content from read:', content)
+      setTemp(content);
+      console.log(content);
+  }
+
+  // const test=() =>{
+  //   var x = '5';
+  //   setTemp(x);
+  //   console.log(x);
+  // }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -127,7 +191,7 @@ export default function InfoScreen() {
             <View>
               <TextInput
                 style={[styles.loginTextInput]}
-                placeholder="Enter temperature here"
+                placeholder= {temp}
                 onChangeText={handleChange('temp')}
                 value={values.temp}
                 keyboardType='numeric'
@@ -138,7 +202,20 @@ export default function InfoScreen() {
         </Formik>
       </View>
       <View style={styles.content1}>
-        <Nfc setTemp={test}/>
+        <SafeAreaView style={{padding: 20}}>
+          <Text>NFC SCANNER</Text>
+          <TouchableOpacity
+            style={{
+              padding: 10,
+              width: 200,
+              margin: 20,
+              borderWidth: 1,
+              borderColor: 'black',
+            }}
+            onPress={readData}>
+            <Text>Read</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
       </View>
       <View style={styles.riskLevel}>
         <Text style={{color:'grey',fontSize:20, marginTop:30}}>Risk Level</Text>
