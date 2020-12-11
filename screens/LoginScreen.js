@@ -13,15 +13,15 @@ function LoginScreen({navigation}) {
   }
   const auth0 = new Auth0({ domain: 'dev-898-w5h0.au.auth0.com', clientId: 'pZRM75jknulto3yeftlgSRn3Q0f3Sdjy' });
   
-  // auth0
-  //   .webAuth
-  //   .authorize({scope: 'openid profile email'})
-  //   .then(credentials =>
-  //     // Successfully authenticated
-  //     // Store the accessToken
-  //     this.setState({ accessToken: credentials.accessToken })
-  //   )
-  //   .catch(error => console.log(error));
+  auth0
+    .webAuth
+    .authorize({scope: 'openid profile email'})
+    .then(credentials =>
+      // Successfully authenticated
+      // Store the accessToken
+      this.setState({ accessToken: credentials.accessToken })
+    )
+    .catch(error => console.log(error));
 
   // auth0.webAuth
   // .clearSession({})

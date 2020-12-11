@@ -3,9 +3,13 @@ import {createAppContainer} from 'react-navigation'
 import Login from '../screens/LoginScreen';
 import Register from '../screens/RegisterScreen';
 import Content from '../screens/ContentScreen';
+import Info from '../screens/InfoScreen';
 
 
 const screens = {
+    Info : {
+        screen: Info
+    },
     Home : {
         screen: Login
     },
@@ -14,7 +18,8 @@ const screens = {
     },
     Content : {
         screen: Content
-    }
+    },
+    
 
 }
 const HomeStack = createStackNavigator(screens)
