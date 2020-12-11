@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end'
   },
   content4: {
-    flex: 1,
+    flex: 1.5,
     flexDirection: 'row',
     alignContent:'flex-end'
   },
